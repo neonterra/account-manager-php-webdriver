@@ -18,6 +18,12 @@ class CreateAccountsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('country');
+            $table->string('phone_number');
+            $table->string('type');
+            $table->string('otp_pin');
             $table->longText('metaJson')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

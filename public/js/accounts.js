@@ -9,7 +9,7 @@ $(document).ready(function (){
 
 
 async function generateAccountRequest (totalAccounts){
-    const { value: accountCount } = await Swal.fire({
+    /* const { value: accountCount } = await Swal.fire({
         title: 'Enter Number of accounts to generate',
         input: 'number',
         inputValue:totalAccounts,
@@ -22,20 +22,21 @@ async function generateAccountRequest (totalAccounts){
                 });
             }
         }
-    });
-
+    }); */
+    console.log('i have called');
+    accountCount = 1;
     if (accountCount) {
-        data.accountCount = accountCount;
+        let form_data = new FormData();
+        form_data.append('accountCount',accountCount);
         $.ajax({
             type: "post",
-            url: ajaxUrl + 'api/v1/accounts',
+            url: ajaxUrl + 'accounts',
             headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
-            data: data,
+            data: form_data,
             contentType: false,
             cache: false,
             processData: false,
             dataType: 'json',
-    
             success: (response) => {
                 if(response.status == 200){
                  console.log('response' , response);
